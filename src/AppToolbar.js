@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  title: {
+    flex: 1
+  }
 }));
 
 export default function AppToolbar() {
@@ -63,7 +66,7 @@ export default function AppToolbar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Movie Browser
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
