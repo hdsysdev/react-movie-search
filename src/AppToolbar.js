@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function AppToolbar() {
+export default function AppToolbar(props) {
   const classes = useStyles();
   return (
     <>
@@ -74,6 +74,8 @@ export default function AppToolbar() {
             </div>
             <InputBase
               placeholder="Search…"
+              onChange={props.onSearchChange}
+              value={props.value}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
