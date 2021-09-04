@@ -1,6 +1,7 @@
 import React from "react";
-import { alpha, AppBar, IconButton, InputBase, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import {alpha, AppBar, Button, IconButton, InputBase, makeStyles, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import {Search} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -73,16 +74,35 @@ export default function AppToolbar(props) {
               <MenuIcon />
             </div>
             <InputBase
-              placeholder="Search…"
-              onChange={props.onSearchChange}
-              value={props.value}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
+                placeholder="Filter…"
+                onChange={props.onFilterChange}
+                value={props.value}
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'filter' }}
             />
           </div>
+
+          <form className={classes.search} onSubmit={props.onSearchSubmit}>
+            <div className={classes.searchIcon}>
+              <MenuIcon />
+            </div>
+            <InputBase
+                placeholder="Search…"
+                value={props.searchValue}
+                onChange={props.onSearchChange}
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+            />
+            <IconButton variant="contained" color="primary" type="submit">
+              <Search/>
+            </IconButton>
+          </form>
         </Toolbar>
       </AppBar>
     </>
