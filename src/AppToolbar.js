@@ -1,7 +1,7 @@
 import React from "react";
 import {alpha, AppBar, Button, IconButton, InputBase, makeStyles, Toolbar, Typography} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import {Search} from "@material-ui/icons";
+import {Search, SearchTwoTone} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -71,7 +71,7 @@ export default function AppToolbar(props) {
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <MenuIcon />
+              <SearchTwoTone />
             </div>
             <InputBase
                 placeholder="Filter…"
@@ -87,7 +87,7 @@ export default function AppToolbar(props) {
 
           <form className={classes.search} onSubmit={props.onSearchSubmit}>
             <div className={classes.searchIcon}>
-              <MenuIcon />
+              <Search />
             </div>
             <InputBase
                 placeholder="Search…"
