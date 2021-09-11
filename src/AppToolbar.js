@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    flex: 1
+    marginRight: 'auto'
   }
 }));
 
@@ -57,14 +57,6 @@ export default function AppToolbar(props) {
     <>
       <AppBar position="static">
         <Toolbar>
-          {/*<IconButton*/}
-          {/*  edges="start"*/}
-          {/*  className={classes.menuButton}*/}
-          {/*  color="primary"*/}
-          {/*  aria-label="menu"*/}
-          {/*>*/}
-          {/*  <MenuIcon />*/}
-          {/*</IconButton>*/}
           <Typography className={classes.title} variant="h6" noWrap>
             Movie Browser
           </Typography>
