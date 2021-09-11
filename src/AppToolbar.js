@@ -1,6 +1,5 @@
 import React from "react";
-import {alpha, AppBar, Button, IconButton, InputBase, makeStyles, Toolbar, Typography} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+import {alpha, AppBar, IconButton, InputBase, makeStyles, Toolbar, Typography} from "@material-ui/core";
 import {Search, SearchTwoTone} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
@@ -58,14 +57,14 @@ export default function AppToolbar(props) {
     <>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edges="start"
-            className={classes.menuButton}
-            color="primary"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          {/*<IconButton*/}
+          {/*  edges="start"*/}
+          {/*  className={classes.menuButton}*/}
+          {/*  color="primary"*/}
+          {/*  aria-label="menu"*/}
+          {/*>*/}
+          {/*  <MenuIcon />*/}
+          {/*</IconButton>*/}
           <Typography className={classes.title} variant="h6" noWrap>
             Movie Browser
           </Typography>

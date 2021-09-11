@@ -33,7 +33,8 @@ function MovieItem(props) {
             <img src={movie.poster} className={styles.image} alt='Movie cover'/>
             <div className={styles.detailsContainer}>
                 <h2 className={styles.text}>{movie.title}</h2>
-                <p className={styles.text}>{movie.description}</p>
+                <h3 className={styles.text}>Year: {movie.year}</h3>
+                <h3 className={styles.text}>Type: {movie.description}</h3>
             </div>
         </Paper>
     )

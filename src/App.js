@@ -11,8 +11,10 @@ const apiUrl = 'http://www.omdbapi.com/?apikey=3c38531d&';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {movies: [], displayedMovies: [],
-            value: '', searchValue: '', openMsg: false};
+        this.state = {
+            movies: [], displayedMovies: [],
+            value: '', searchValue: '', openMsg: false
+        };
 
         this.filterList = this.filterList.bind(this);
         this.filterByString = this.filterByString.bind(this);
@@ -21,26 +23,27 @@ class App extends Component {
         this.closeSnackbar = this.closeSnackbar.bind(this);
     }
 
-    filterList(event){
+    filterList(event) {
         this.setState({value: event.target.value}, () => {
             this.filterByString(this.state.value);
         });
     }
 
-    filterByString(filterStr){
-        if (filterStr){
-            const newList = this.state.movies.filter(mov => mov.title.includes(this.state.value));
+    filterByString(filterStr) {
+        if (filterStr) {
+            const newList = this.state.movies.filter(mov =>
+                mov.title.toLowerCase().includes(this.state.value.toLowerCase()));
             this.setState({displayedMovies: newList});
         } else {
             this.setState({displayedMovies: this.state.movies});
         }
     }
 
-    handleSearchChange(event){
+    handleSearchChange(event) {
         this.setState({searchValue: event.target.value});
     }
 
-    searchMovie(event){
+    searchMovie(event) {
         axios.get(`${apiUrl}s=${this.state.searchValue}&page=1`)
             .then(res => {
                 const newList = [];
@@ -48,7 +51,8 @@ class App extends Component {
                     id: movie.imdbID,
                     title: movie.Title,
                     description: movie.Type,
-                    poster: movie.Poster
+                    poster: movie.Poster,
+                    year: movie.Year
                 }));
 
                 this.setState({movies: newList}, () => {
@@ -59,17 +63,23 @@ class App extends Component {
         event.preventDefault();
     }
 
-    closeSnackbar(){
+    closeSnackbar() {
         this.setState({openMsg: false});
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
         axios.get(apiUrl + 's=Movie&page=1')
             .then(res => {
                 const movieList = [];
                 res.data.Search.forEach(movie => {
-                    movieList.push({id: movie.imdbID, title: movie.Title, description: movie.Type, poster: movie.Poster});
+                    movieList.push({
+                        id: movie.imdbID,
+                        title: movie.Title,
+                        description: movie.Type,
+                        poster: movie.Poster,
+                        year: movie.Year
+                    });
                 });
                 this.setState({movies: movieList, displayedMovies: movieList});
                 console.log(res);
@@ -78,7 +88,8 @@ class App extends Component {
                 console.error(error);
             });
     }
-    render(){
+
+    render() {
 
         return (
             <div className="App">
@@ -110,7 +121,7 @@ const Snack = (props) => {
         action={
             <React.Fragment>
                 <IconButton size="small" aria-label="close" color="inherit" onClick={props.handleClose}>
-                    <Close fontSize="small" />
+                    <Close fontSize="small"/>
                 </IconButton>
             </React.Fragment>
         }
